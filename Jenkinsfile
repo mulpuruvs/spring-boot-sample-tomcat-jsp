@@ -8,12 +8,12 @@ node {
     // ip address of the docker private repository(nexus)
     
     def dockerRepoUrl = "http://52.88.120.188:8080"
-    def dockerImageName = "hello-world-java"
+    def dockerImageName = "monitoring-rest-app"
     def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
     
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
-      git 'https://github.com/mahi4847/docker-hello-world-spring-boot.git'
+      git 'https://github.com/mahi4847/spring-boot-sample-tomcat-jsp.git'
       // Get the Maven tool.
       // ** NOTE: This 'maven-3.5.2' Maven tool must be configured
       // **       in the global configuration.           
@@ -39,9 +39,9 @@ node {
 		
     stage('Build Docker Image') {
       // build docker image
-      sh "mv ./target/hello*.jar ./data" 
+      sh "mv ./target/*.jar ./data" 
       
-      dockerImage = docker.build("hello-world-java")
+      dockerImage = docker.build("monitoring-rest-app")
     }
    
     stage('Deploy Docker Image'){
