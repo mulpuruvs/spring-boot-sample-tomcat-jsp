@@ -32,5 +32,16 @@ pipeline{
     			}
     		}
     	}
+        stage('Deploy') {
+	
+            kubernetesDeploy (
+                kubeconfigId: 'kubeconfig',
+                configs: 'Application.yml',
+                enableConfigSubstitution: false
+            )
+            echo 'App url http://api.aigdevopscoe.net:30006/<<app-name>>'
+        }
+
+        
     }
 }
