@@ -55,6 +55,6 @@ public class SampleWebJspApplicationTests {
 	}
 	@Test
 	public void testJspWithE2() throws Exception {
-		assertEquals(HttpStatus.OK, "OK");
+		assertEquals(HttpStatus.OK, 200);
 	}
 }
