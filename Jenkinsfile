@@ -9,7 +9,7 @@ pipeline{
     		steps {
                 echo 'Running build automation'
                 sh 'mvn clean package'
-                archiveArtifacts artifacts: 'target/spring-boot-sample-tomcat-jsp*.jar'
+                archiveArtifacts artifacts: 'target/spring-boot-sample-tomcat-jsp*.war'
     		}
     	}
     	stage('Build Docker Image'){
