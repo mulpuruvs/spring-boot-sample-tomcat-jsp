@@ -1,14 +1,11 @@
 pipeline{
     agent any
-    //tools {
-    //    gradle 'gradle'
-    //}
     stages{
     	stage('Build'){
     		steps {
-    		     	echo 'Running build automation'
-    			sh './gradlew build --no-daemon'
-    			archiveArtifacts artifacts: 'dist/trainSchedule.zip'
+                echo 'Running build automation'
+                sh 'mvn clean install'
+                archiveArtifacts artifacts: 'target/spring-boot-sample-tomcat-jsp*.jar'
     		}
     	}
     	stage('Build Docker Image'){
@@ -16,7 +13,7 @@ pipeline{
     			script{
     				app = docker.build("mahi4847/monitoring-app")
     				app.inside{
-    					sh 'echo $(curl http://54.191.133.216:8080)'
+    				sh 'echo $(curl http://54.191.133.216:8080)'
     				}
     			}
     		}
