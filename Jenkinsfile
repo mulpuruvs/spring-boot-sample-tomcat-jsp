@@ -4,7 +4,7 @@ pipeline{
     	stage('Build'){
     		steps {
                 echo 'Running build automation'
-                sh 'mvn clean install'
+                sh 'mvn clean package'
                 archiveArtifacts artifacts: 'target/spring-boot-sample-tomcat-jsp*.jar'
     		}
     	}
@@ -13,7 +13,7 @@ pipeline{
     			script{
     				app = docker.build("mahi4847/monitoring-app")
     				app.inside{
-    				sh 'echo $(curl http://54.191.133.216:8080)'
+    				sh 'echo $(curl http://54.121.95.266:30001)'
     				}
     			}
     		}
