@@ -6,7 +6,7 @@ COPY . ./
 EXPOSE 8080
 
 #default command
-#CMD java -jar /data/hello-world-0.1.0.jar
+#CMD java -jar /data/monitoring-rest-app-0.1.0.jar
 
 #copy hello world to docker image
-#ADD ./data/hello-world-0.1.0.jar /data/hello-world-0.1.0.jar
+#ADD ./data/monitoring-rest-app-0.1.0.jar /data/monitoring-rest-app-0.1.0.jar
