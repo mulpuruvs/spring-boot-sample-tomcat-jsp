@@ -24,7 +24,7 @@ pipeline{
         stage('Build Docker Image'){
     		steps{
     			script{
-    				app = docker.build("mahi4847/monitoring-app")
+    				app = docker.build("mulpuruvsdockerid/monitor-app")
     				app.inside{
     				//sh 'echo $(curl http://54.121.95.266:30001)'
     				}
@@ -34,7 +34,7 @@ pipeline{
     	stage('Push Docker Image'){
     		steps{
     			script{
-    				docker.withRegistry('https://registry.hub.docker.com', 'git-docker-login'){
+    				docker.withRegistry('https://registry.hub.docker.com', 'DocCred'){
     					app.push("${env.BUILD_NUMBER}")
     					app.push("latest")
     				}
