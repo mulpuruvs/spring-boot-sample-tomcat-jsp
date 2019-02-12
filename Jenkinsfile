@@ -16,17 +16,17 @@ pipeline{
          //       sh "mvn test"
          //     }
        // }
-        stage('SonarQube Code Analysis') {
+       /* stage('SonarQube Code Analysis') {
             steps {
                 sh "mvn sonar:sonar -Dsonar.host.url=http://54.185.178.109:30002"
               }
-        }
+        } */
         stage('Build Docker Image'){
     		steps{
     			script{
     				app = docker.build("mulpuruvsdockerid/monitor-app")
     				app.inside{
-    				//sh 'echo $(curl http://54.121.95.266:30001)'
+    				//sh 'echo $(curl http://54.212.233.123:30001)'
     				}
     			}
     		}
@@ -46,8 +46,8 @@ pipeline{
               kubernetesDeploy(
                 kubeconfigId: 'kubeconfig',
                 configs: 'application.yaml',
-                enableConfigSubstitution: true)
-                //echo 'App url: http://54.188.213.9:31008/'
+                enableConfigSubstitution: false)
+                //echo 'App url: http://54.212.233.123:31008/'
           }
         }
     }
