@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: monitoring-app
-        image: mahi4847/monitoring-app:latest
+        image: mulpuruvsdockerid/monitoring-app:latest
         ports:
         - containerPort: 8080
 ---
