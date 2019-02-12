@@ -24,7 +24,7 @@ pipeline{
         stage('Build Docker Image'){
     		steps{
     			script{
-    				app = docker.build("mulpuruvsdockerid/monitor-app")
+    				app = docker.build("mulpuruvsdockerid/monitoring-app")
     				app.inside{
     				//sh 'echo $(curl http://54.212.233.123:30001)'
     				}
